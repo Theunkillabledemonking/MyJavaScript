@@ -1,5 +1,5 @@
 document.getElementById('div1').addEventListener('click', function(event) {
-    if (event.target.id === 'btm') {
+    if (event.target.id === 'btn') {
         alert('Button Clicked');
     } else if (event.target.id === 'div2') {
         alert('DIV2 Clicked');
