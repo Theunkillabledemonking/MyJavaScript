@@ -20,8 +20,33 @@
   </div>
 
   <div>
-    <h1>자식 구조</h1>
+    <h1>부모 -> 자식</h1>
     <TodoItem v-for="item in todos" :key="item.id" :todo="item" />
+  </div>
+
+  <div>
+    <h1>자식 -> 부모</h1>
+    <ChildComponentP @custom-event="handleEvent" />
+  </div>
+
+  <div>
+    <h1>Vue Router 예제</h1>
+    <nav>
+      <router-link to="/home">홈</router-link> |
+      <router-link to="/completed">완료된 목록</router-link> |
+      <router-link to="/notcompleted">미완료 목록</router-link>
+    </nav>
+    <router-view /> <!-- 현재 url에 맞는 컴포넌트가 표시 -->
+  </div>
+
+  <div>
+    <h2>파라미터 동적 페이지(할 일 목록)</h2>
+    <nav>
+      <router-link to="/">홈</router-link> |
+      <router-link to="/todo/1">할 일 1 </router-link> |
+      <router-link to="/todo/2">할 일 2</router-link>
+    </nav>
+    <router-view /> <!-- 현재 url에 맞는 컴포넌트 표시 -->
   </div>
 </template>
 
@@ -29,6 +54,7 @@
 import ButtonComponent from "@/components/ButtonComponent.vue";
 import ChildComponent from "./components/ChildComponent.vue";
 import TodoItem from "./components/TodoItem.vue"
+import ChildComponentP from "./components/ChildComponentP.vue";
 
 export default {
   name: "App",
@@ -36,6 +62,7 @@ export default {
     ButtonComponent,
     ChildComponent,
     TodoItem,
+    ChildComponentP,
   },
   data() {
     return {
@@ -49,6 +76,10 @@ export default {
     handleButtonClick() {
       alert('버튼이 클릭되었습니다!');
     },
+    handleEvent(data) {
+      alert(data); // 자식이 보맨 데이터 출력
+    }
   },
+
 };
 </script>
