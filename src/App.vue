@@ -48,6 +48,13 @@
     </nav>
     <router-view /> <!-- 현재 url에 맞는 컴포넌트 표시 -->
   </div>
+
+  <div>
+    <p>현재 카운트: {{ count }}</p>
+    <p>2배 카운트: {{doubleCount}}</p>
+    <button @click="increment">증가</button>
+    <button @click="incrementAsync">1초 후 증가</button>
+  </div>
 </template>
 
 <script>
@@ -55,6 +62,7 @@ import ButtonComponent from "@/components/ButtonComponent.vue";
 import ChildComponent from "./components/ChildComponent.vue";
 import TodoItem from "./components/TodoItem.vue"
 import ChildComponentP from "./components/ChildComponentP.vue";
+import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "App",
@@ -62,7 +70,12 @@ export default {
     ButtonComponent,
     ChildComponent,
     TodoItem,
-    ChildComponentP,
+    ChildComponentP
+  },
+  computed: {
+    // state와 getters 매핑
+    ...mapState(["count"]),
+    ...mapGetters(["doubleCount"])
   },
   data() {
     return {
@@ -78,8 +91,11 @@ export default {
     },
     handleEvent(data) {
       alert(data); // 자식이 보맨 데이터 출력
-    }
-  },
+    },
+    // action 매핑 (뮤테이션은 mapMutations 사용)
+    ...mapMutations(["increment"]),
+    ...mapActions(["incrementAsync"]),
+  }
 
 };
 </script>
