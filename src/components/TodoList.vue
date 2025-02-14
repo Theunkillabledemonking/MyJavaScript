@@ -1,7 +1,7 @@
 
 <template>
   <ul>
-    <TodoItem v-for="item in todos" :key="item.id" :todo="time" />
+    <TodoItem v-for="item in todos" :key="item.id" :todo="text" />
   </ul>
 </template>
 

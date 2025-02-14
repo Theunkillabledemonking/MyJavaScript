@@ -50,10 +50,10 @@
   </div>
 
   <div>
-    <p>현재 카운트: {{ count }}</p>
-    <p>2배 카운트: {{doubleCount}}</p>
-    <button @click="increment">증가</button>
-    <button @click="incrementAsync">1초 후 증가</button>
+    <p>현재 카운트: {{ store.count }}</p>
+    <p>2배 카운트: {{ store.doubleCount }}</p>
+    <button @click="store.increment">증가</button>
+    <button @click="store.incrementAsync">1초 후 증가</button>
   </div>
 </template>
 
@@ -62,7 +62,8 @@ import ButtonComponent from "@/components/ButtonComponent.vue";
 import ChildComponent from "./components/ChildComponent.vue";
 import TodoItem from "./components/TodoItem.vue"
 import ChildComponentP from "./components/ChildComponentP.vue";
-import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
+
+import { useCounterStore } from "@/store/counter";
 
 export default {
   name: "App",
@@ -72,30 +73,17 @@ export default {
     TodoItem,
     ChildComponentP
   },
-  computed: {
-    // state와 getters 매핑
-    ...mapState(["count"]),
-    ...mapGetters(["doubleCount"])
-  },
-  data() {
-    return {
-      todos: [
-        {id: 1, text: "vue 공부하기"},
-        {id: 2, text: "컴포넌트 학습하기"},
-      ],
-    };
+  setup() {
+    const store = useCounterStore(); // Pinia 스토어 가져오기
+    return { store };
   },
   methods: {
     handleButtonClick() {
-      alert('버튼이 클릭되었습니다!');
+      alert('버튼이 클릭이 되었습니다.');
     },
     handleEvent(data) {
-      alert(data); // 자식이 보맨 데이터 출력
+      alert(data);
     },
-    // action 매핑 (뮤테이션은 mapMutations 사용)
-    ...mapMutations(["increment"]),
-    ...mapActions(["incrementAsync"]),
   }
-
 };
 </script>
