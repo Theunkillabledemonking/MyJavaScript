@@ -4,6 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List DOM Creation</title>
+<!--     <style>
+      *. {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100vh;
+        background: linear-gradient(
+          180deg,
+          #3ac6f3 0%,
+          rgba(200, 180, 0.4) 40%,
+          rgba(255, 0, 0.56) 100%
+        );
+        overflow: hidden;
+      }
+
+      #app {
+        background: #fff;
+        max-width: 500px;
+        width: 100%;
+        margin: 100px auto;
+        padding: 20px;
+        border-radius: 6px:
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #counter span {
+        margin-right: 0.5rem;
+      }
+
+      #input-field {
+        margin: 20px 0;
+        width: 100px;
+        display: flex;
+        height: 2.5rem;
+      }
+
+      #input-field input {
+        width: 85%;
+        height: 100%;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        font-size: 0.8rem;
+        padding-left: 15px;
+        outline: none;
+      }
+
+      #input-filed input:focus {
+        border-color: #ff0051;
+      }
+
+      #input-filed button {
+        widht: 50px;
+        height: 100%;
+        border: none;
+        color: #fff;
+        margin-left: 5px;
+        font-size: 21px;
+        outline: none;
+        background: #3ac6f3;
+        border-radius: 3px;
+      }
+
+      #input-field button:hover {
+        background: #ff0051;
+      }
+
+      #item-list-container {
+        max-height: 250px;
+        overflow: scroll;
+      }
+
+      #item-list-container li {
+        position: relactive;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        height: 3rem;
+        line-height: 3rem;
+        margin-botton: 0.5rem;
+        overflow: hidden;
+        border-radius: 5px;
+      }
+
+      #item-list-container div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      #item-list-container input {
+        margin: 1rem;
+        transition-duration: 0.5s;
+        opacity: 1;
+      }
+      #item-list-container button {
+        width: 3rem;
+        margin: 0.3rem 1rem;
+        width: 3rem;
+        border: none;
+        color: #fff;
+        margin-left: 5px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        outline: none;
+        background: #f97;
+        border-radius: 3px;
+        transition-duration: 0.5s;
+        opacity: 1;
+      }
+      #item-list-container button:hover {
+        background-color: #ddd;
+      }
+      #item-list-container span {
+        width: 100%;
+        text-align: 'left';
+      }
+    </style> -->
   </head>
   <body>
     <script>
@@ -75,6 +198,165 @@
       // -----------------------------------------------------
       // 🛠️ 2. `createElement` 함수 (DOM 요소를 동적으로 생성)
       // -----------------------------------------------------
+      
+      // // 인라인 스타일
+      // app.style.background = '#000';배경 검은색
+      // app.style.setProperty('background', '#f00');
+      // app.style.cssText = `background: #fff;  cssText를 활용해 여러 스타일 한 전에 적용
+      //   max-width: 500px;
+      //   width: 100%;
+      //   margin: 100px auto;
+      //   padding: 20px;
+      //   border-radius: 6px:
+      //   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);`
+
+      // app.style.removeProperty('box-shadow'); // 그림자 효과 삭제
+
+      // 스타일 시트에 동적으로 css 추가
+      // document.styleSheets[0].insertRule(`      #app {
+      //   background: #fff;
+      //   max-width: 500px;
+      //   width: 100%;
+      //   margin: 100px auto;
+      //   padding: 20px;
+      //   border-radius: 6px:
+      //   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+      // }`);
+      
+      //document.styleSheets[0].deleteRule(0);
+
+      // app.style.background = '#000'; 
+      // console.log(app.style.background); 
+      // console.log(getComputedStyle(app));
+
+      const styleSheet = new CSSStyle();
+      styleSheet.replace(*. {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 100vh;
+        background: linear-gradient(
+          180deg,
+          #3ac6f3 0%,
+          rgba(200, 180, 0.4) 40%,
+          rgba(255, 0, 0.56) 100%
+        );
+        overflow: hidden;
+      }
+
+      #app {
+        background: #fff;
+        max-width: 500px;
+        width: 100%;
+        margin: 100px auto;
+        padding: 20px;
+        border-radius: 6px:
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #counter span {
+        margin-right: 0.5rem;
+      }
+
+      #input-field {
+        margin: 20px 0;
+        width: 100px;
+        display: flex;
+        height: 2.5rem;
+      }
+
+      #input-field input {
+        width: 85%;
+        height: 100%;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        font-size: 0.8rem;
+        padding-left: 15px;
+        outline: none;
+      }
+
+      #input-filed input:focus {
+        border-color: #ff0051;
+      }
+
+      #input-filed button {
+        widht: 50px;
+        height: 100%;
+        border: none;
+        color: #fff;
+        margin-left: 5px;
+        font-size: 21px;
+        outline: none;
+        background: #3ac6f3;
+        border-radius: 3px;
+      }
+
+      #input-field button:hover {
+        background: #ff0051;
+      }
+
+      #item-list-container {
+        max-height: 250px;
+        overflow: scroll;
+      }
+
+      #item-list-container li {
+        position: relactive;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        height: 3rem;
+        line-height: 3rem;
+        margin-botton: 0.5rem;
+        overflow: hidden;
+        border-radius: 5px;
+      }
+
+      #item-list-container div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      #item-list-container input {
+        margin: 1rem;
+        transition-duration: 0.5s;
+        opacity: 1;
+      }
+      #item-list-container button {
+        width: 3rem;
+        margin: 0.3rem 1rem;
+        width: 3rem;
+        border: none;
+        color: #fff;
+        margin-left: 5px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        outline: none;
+        background: #f97;
+        border-radius: 3px;
+        transition-duration: 0.5s;
+        opacity: 1;
+      }
+      #item-list-container button:hover {
+        background-color: #ddd;
+      }
+      #item-list-container span {
+        width: 100%;
+        text-align: 'left';
+      });
+
+      // console.log(styleSheet);
+      // document.head.appendChild(styleSheet);
+
+      document.adoptedStyleSheets = [styleSheet];
+      
       function createElement({
         tagName,       // 생성할 태그명 (예: 'div', 'span', 'button' 등)
         properties,    // 요소에 추가할 속성들 (예: { innerText: 'hello' })
