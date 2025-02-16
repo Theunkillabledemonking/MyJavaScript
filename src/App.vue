@@ -4,7 +4,7 @@
       <router-link to="/">홈</router-link>
       <router-link to="/board">게시판</router-link>
     </nav>
-    <router view/>
+    <router-view />
   </div>
 </template>
 
