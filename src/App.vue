@@ -1,5 +1,15 @@
 <template>
   <div>
+    <nav>
+      <router-link to="/">홈</router-link>
+      <router-link to="/board">게시판</router-link>
+    </nav>
+    <router view/>
+  </div>
+</template>
+
+<template>
+  <div>
     <h1>Vue 테스트 페이지</h1>
     <nav>
       <router-link to="/">One Way</router-link> |
