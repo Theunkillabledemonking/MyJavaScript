@@ -76,8 +76,9 @@
       // 🛠️ 2. 할 일 추가 이벤트 처리
       // -----------------------------------------------------
 
-      const styleSheet = new CSSStyle();
-      styleSheet.replace(*. {
+      const styleSheet = new CSSStyleSheet();
+      styleSheet.replaceSync(`
+      *. {
         margin: 0;
         padding: 0;
       }
@@ -198,7 +199,8 @@
       #item-list-container span {
         width: 100%;
         text-align: 'left';
-      });
+      }`
+      );
 
       document.adoptedStyleSheets = [styleSheet];
       
